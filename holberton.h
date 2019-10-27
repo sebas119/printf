@@ -15,12 +15,11 @@
 typedef struct printTypes
 {
 	char *specifier;
-	void (*f)();
+	int (*f)();
 } pt;
 
 
 /* Tools */
-int _putchar(char c);
 int _strlen(const char *s);
 char *_strcpy(char *dest, char *src);
 /* End tools */
