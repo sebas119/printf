@@ -28,26 +28,9 @@ int _printf(const char *format, ...)
 
 	while (format != NULL && *format != '\n')
 	{
-		if(*format == '%')
-		{
-			format++;
-
-			for (j = 0; types[j].specifier != NULL; j++)
-			{
-				if (*format == types[j].specifier[0])
-				{
-					types[j].f(args);
-					format++;
-					ans++;
-				}
-			}
-		}
-		else
-		{
-			_putchar(*format);
-			format++;
-			ans++;
-		}
+		_putchar(*format);
+		format++;
+		ans++;
 	}
 
 	va_end(args);
