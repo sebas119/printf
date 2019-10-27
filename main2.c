@@ -1,5 +1,5 @@
 #include "holberton.h"
-#include <stdio.h>
+
 /**
  * main - Test cases purposes
  *
@@ -7,8 +7,15 @@
  */
 int main(void)
 {
-	printf("\n\nMIO\n\n");
-	_printf("xcx");
-	printf("\nsalto\n");
+	int ans = 0;
+	printf("\nPRINTF MOD\n\n");
+	_printf("x%cx%sx", 'h', "hola");
+	printf("\nEND PRINTF MOD\n");
+	
+	
+	printf("\n_PRINTF RETURN\n\n");
+	ans = _printf("x%cx", 'h');
+	printf("\nans: %d\n", ans);
+	printf("\n_PRINTF RETURN\n");
 	return (0);
 }

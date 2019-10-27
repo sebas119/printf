@@ -12,14 +12,12 @@ int _putchar(char c)
 	return (write(1, &c, 1));
 }
 
-size_t _strlen(const char *s)
+int _strlen(const char *s)
 {
-	size_t i = 0;
+	int i = 0;
 
 	while(s[i] != '\0')
-	{
 		i++;
-	}
 
 	return (i);
 }

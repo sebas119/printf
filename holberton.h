@@ -17,11 +17,13 @@ typedef struct printTypes
 	void (*f)();
 } pt;
 
-int _putchar(char c);
-int _printf(const char *format, ...);
 
 /* Tools */
-size_t _strlen(const char *s);
+int _putchar(char c);
+int _strlen(const char *s);
 char *_strcpy(char *dest, char *src);
+/* End tools */
+
+int _printf(const char *format, ...);
 
 #endif /* PRINTF_H */
