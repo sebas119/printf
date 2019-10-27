@@ -1,8 +1,10 @@
 #include "holberton.h"
+#include <stdio.h>
 
 int printChar(va_list args);
 int printString(va_list args);
 int printPercentage(va_list args);
+int printInteger(va_list args);
 
 /**
  * _printf - Emulate the behavior of printf original
@@ -19,6 +21,7 @@ int _printf(const char *format, ...)
 		{"c", printChar},
 		{"s", printString},
 		{"%", printPercentage},
+		{"d", printInteger},
 		{NULL, NULL}
 	};
 
@@ -55,7 +58,8 @@ int _printf(const char *format, ...)
 /**
  * printChar - Prints a character
  * @args: Argument passed
- * @ans: total of chars
+ *
+ * Return: length of data
  */
 int printChar(va_list args)
 {
@@ -66,7 +70,8 @@ int printChar(va_list args)
 /**
  * printString - Prints a string
  * @args: Argument passed
- * @ans: total of chars
+ *
+ * Return: length of data
  */
 int printString(va_list args)
 {
@@ -76,11 +81,35 @@ int printString(va_list args)
 	return (write(1, str, size));
 }
 
-
+/**
+ * printPercentage - Prints a percent
+ * @args: Argument passed
+ *
+ * Return: length of data
+ */
 int printPercentage(va_list args)
 {
 	char p = '%';
 
 	(void) args;
 	return (write(1, &p, 1));
+}
+
+/**
+ * printInteger - Prints an integer
+ * @args: Argument passed
+ *
+ * Return: length of data
+ */
+int printInteger(va_list args)
+{
+	char buff[33];
+	char *str;
+	int num = va_arg(args, int);
+	int size;
+
+	str = itoa(num, buff, 10);
+	size = _strlen(str);
+
+	return (write(1, str, size));
 }
