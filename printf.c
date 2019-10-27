@@ -1,7 +1,10 @@
 #include "holberton.h"
+#include <stdio.h>
 
-void printChar(va_list args, int *ans);
-void printString(va_list args, int *ans);
+int printChar(va_list args);
+int printString(va_list args);
+int printPercentage(va_list args);
+int printInteger(va_list args);
 
 /**
  * _printf - Emulate the behavior of printf original
@@ -17,7 +20,8 @@ int _printf(const char *format, ...)
 	pt types[] = {
 		{"c", printChar},
 		{"s", printString},
-		{"%", NULL},
+		{"%", printPercentage},
+		{"d", printInteger},
 		{NULL, NULL}
 	};
 
@@ -32,16 +36,7 @@ int _printf(const char *format, ...)
 			{
 				if (*format == *(types[i].specifier))
 				{
-					if (types[i].f != NULL)
-					{
-						types[i].f(args, &ans);
-					}
-					else
-					{
-						_putchar(*(types[i].specifier)); /* e.g. % */
-						ans++;
-					}
-
+					ans += types[i].f(args);
 					format++;
 					break;
 				}
@@ -49,9 +44,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			_putchar(*format);
-			format++;
-			ans++;
+			ans += write(1, format++, 1);
 		}
 	}
 
@@ -65,26 +58,58 @@ int _printf(const char *format, ...)
 /**
  * printChar - Prints a character
  * @args: Argument passed
- * @ans: total of chars
+ *
+ * Return: length of data
  */
-void printChar(va_list args, int *ans)
+int printChar(va_list args)
 {
 	char c = va_arg(args, int);
 
-	_putchar(c);
-	*ans = *ans + 1;
+	return (write(1, &c, 1));
 }
 /**
  * printString - Prints a string
  * @args: Argument passed
- * @ans: total of chars
+ *
+ * Return: length of data
  */
-void printString(va_list args, int *ans)
+int printString(va_list args)
 {
 	char *str = va_arg(args, char *);
+	int size = _strlen(str);
 
-	*ans = *ans + _strlen(str);
-	while (*str != '\0')
-		_putchar(*str++);
+	return (write(1, str, size));
 }
 
+/**
+ * printPercentage - Prints a percent
+ * @args: Argument passed
+ *
+ * Return: length of data
+ */
+int printPercentage(va_list args)
+{
+	char p = '%';
+
+	(void) args;
+	return (write(1, &p, 1));
+}
+
+/**
+ * printInteger - Prints an integer
+ * @args: Argument passed
+ *
+ * Return: length of data
+ */
+int printInteger(va_list args)
+{
+	char buff[33];
+	char *str;
+	int num = va_arg(args, int);
+	int size;
+
+	str = itoa(num, buff, 10);
+	size = _strlen(str);
+
+	return (write(1, str, size));
+}

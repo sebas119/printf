@@ -15,16 +15,22 @@
 typedef struct printTypes
 {
 	char *specifier;
-	void (*f)();
+	int (*f)();
 } pt;
 
 
 /* Tools */
-int _putchar(char c);
 int _strlen(const char *s);
 char *_strcpy(char *dest, char *src);
 /* End tools */
 
-int _printf(const char *format, ...);
+/* String tools */
+int _abs(int n);
+void rev_string(char *s);
+void swap(char *x, char *y);
+char *itoa(int value, char *buffer, int base);
 
+/* End string tools*/
+
+int _printf(const char *format, ...);
 #endif /* PRINTF_H */

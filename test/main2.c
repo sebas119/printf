@@ -17,5 +17,9 @@ int main(void)
 	ans = _printf("aa %c aa %c aa %s %% %%", 'h', 'b', "sebas");
 	printf("\nans: %d\n", ans);
 	printf("\n_PRINTF RETURN\n");
+
+	printf("TESTING ORIGINAL\n");
+	_printf("aa%saa", "gol");
+	printf("\nEND TESTING ORIGINAL\n");
 	return (0);
 }
