@@ -5,18 +5,26 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-
+/**
+ * struct printTypes - Basic structure of printf
+ * @specifier: id of char, char *, int, ...
+ * @f: Function that selects the data type
+ *
+ * Description: id and function of printf
+ */
 typedef struct printTypes
 {
-	char *type;
-	void (*f)(va_list, char *, unsigned int);
+	char *specifier;
+	void (*f)();
 } pt;
 
-int my_putchar(char c);
-int _printf(const char *format, ...);
 
 /* Tools */
-size_t _strlen(const char *s);
+int _putchar(char c);
+int _strlen(const char *s);
 char *_strcpy(char *dest, char *src);
+/* End tools */
+
+int _printf(const char *format, ...);
 
 #endif /* PRINTF_H */

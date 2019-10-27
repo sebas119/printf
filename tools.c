@@ -7,19 +7,23 @@
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int my_putchar(char c)
+int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
 
-size_t _strlen(const char *s)
+/**
+ * _strlen - Count the number of chars in a string
+ * @s: String given
+ *
+ * Return: Length of string
+ */
+int _strlen(const char *s)
 {
-	size_t i = 0;
+	int i = 0;
 
-	while(s[i] != '\0')
-	{
+	while (s[i] != '\0')
 		i++;
-	}
 
 	return (i);
 }

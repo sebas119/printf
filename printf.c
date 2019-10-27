@@ -1,54 +1,90 @@
 #include "holberton.h"
 
-/**
- * _printChar -
- */
-void _printChar(va_list list, char *str, unsigned int pos)
-{
-	str[pos] = va_arg(list, char);
-}
+void printChar(va_list args, int *ans);
+void printString(va_list args, int *ans);
 
 /**
- * _printf -
- * @format:
+ * _printf - Emulate the behavior of printf original
+ * @format: String constant of data
  *
- * Return: ...
+ * Return: Length of the output
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i, j;
-	size_t len = 0;
+	unsigned int i;
+	int ans = 0;
 	va_list args;
-	char  *ans;
 	pt types[] = {
-		{"c", _printChar}
+		{"c", printChar},
+		{"s", printString},
+		{"%", NULL},
+		{NULL, NULL}
 	};
-
-	len = _strlen(format);
-	ans = malloc(sizeof(char) * len + 1);
-	_strcpy(ans, format);
 
 	va_start(args, format);
 
-	while (format[i] != '\0')
+	while (format != NULL && *format != '\0')
 	{
-		j = 0;
-		while (j < 1)
+		if (*format  == '%')
 		{
-			if (format[i] == *types[j].type)
+			format++;
+			for (i = 0; types[i].specifier != NULL; i++)
 			{
-				valid[j].f(args, ans, i);
+				if (*format == *(types[i].specifier))
+				{
+					if (types[i].f != NULL)
+					{
+						types[i].f(args, &ans);
+					}
+					else
+					{
+						_putchar(*(types[i].specifier)); /* e.g. % */
+						ans++;
+					}
+
+					format++;
+					break;
+				}
 			}
-			j++;
 		}
-		i++;
+		else
+		{
+			_putchar(*format);
+			format++;
+			ans++;
+		}
 	}
 
-	for (i = 0; ans != '\0'; i++, ans++)
-	{
-		my_putchar(*ans);
-	}
+	va_end(args);
 
-
-	return (0);
+	return (ans);
 }
+
+
+
+/**
+ * printChar - Prints a character
+ * @args: Argument passed
+ * @ans: total of chars
+ */
+void printChar(va_list args, int *ans)
+{
+	char c = va_arg(args, int);
+
+	_putchar(c);
+	*ans = *ans + 1;
+}
+/**
+ * printString - Prints a string
+ * @args: Argument passed
+ * @ans: total of chars
+ */
+void printString(va_list args, int *ans)
+{
+	char *str = va_arg(args, char *);
+
+	*ans = *ans + _strlen(str);
+	while (*str != '\0')
+		_putchar(*str++);
+}
+
