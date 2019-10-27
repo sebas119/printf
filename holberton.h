@@ -1,16 +1,17 @@
 #ifndef PRINTF_H
 #define PRINTF_H
 
-/*Just for testing*/
-#include <stdio.h>
-#include <string.h>
-/*End testing*/
-
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
 
-
+/**
+ * struct printTypes - Basic structure of printf
+ * @specifier: id of char, char *, int, ...
+ * @f: Function that selects the data type
+ *
+ * Description: id and function of printf
+ */
 typedef struct printTypes
 {
 	char *specifier;

@@ -4,10 +4,10 @@ void printChar(va_list args, int *ans);
 void printString(va_list args, int *ans);
 
 /**
- * _printf -
- * @format:
+ * _printf - Emulate the behavior of printf original
+ * @format: String constant of data
  *
- * Return: ...
+ * Return: Length of the output
  */
 int _printf(const char *format, ...)
 {
@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	pt types[] = {
 		{"c", printChar},
 		{"s", printString},
-		{"%", NULL},		
+		{"%", NULL},
 		{NULL, NULL}
 	};
 
@@ -35,13 +35,13 @@ int _printf(const char *format, ...)
 					if (types[i].f != NULL)
 					{
 						types[i].f(args, &ans);
-					}						
+					}
 					else
 					{
 						_putchar(*(types[i].specifier)); /* e.g. % */
 						ans++;
-					}				
-						
+					}
+
 					format++;
 					break;
 				}
@@ -49,12 +49,10 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			_putchar(*format);			
+			_putchar(*format);
 			format++;
 			ans++;
 		}
-		
-		
 	}
 
 	va_end(args);
@@ -65,19 +63,28 @@ int _printf(const char *format, ...)
 
 
 /**
- * _printChar -
+ * printChar - Prints a character
+ * @args: Argument passed
+ * @ans: total of chars
  */
 void printChar(va_list args, int *ans)
 {
 	char c = va_arg(args, int);
+
 	_putchar(c);
 	*ans = *ans + 1;
 }
-
+/**
+ * printString - Prints a string
+ * @args: Argument passed
+ * @ans: total of chars
+ */
 void printString(va_list args, int *ans)
 {
 	char *str = va_arg(args, char *);
-	printf("%s", str);
-	*ans = *ans + 4;
+
+	*ans = *ans + _strlen(str);
+	while (*str != '\0')
+		_putchar(*str++);
 }
 
