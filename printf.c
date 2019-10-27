@@ -1,20 +1,7 @@
 #include "holberton.h"
 
-/**
- * _printChar -
- */
-void _printChar(va_list args, int *ans)
-{
-	_putchar(va_arg(args, int));
-	*ans = *ans + 1;
-}
-
-void _printString(va_list args, int *ans)
-{
-	printf("%s\n",va_arg(args, char *));
-	
-	*ans += 2;
-}
+void printChar(va_list args, int *ans);
+void printString(va_list args, int *ans);
 
 /**
  * _printf -
@@ -28,8 +15,9 @@ int _printf(const char *format, ...)
 	int ans = 0;
 	va_list args;
 	pt types[] = {
-		{"c", _printChar},
-		/*{"s", _printString},*/
+		{"c", printChar},
+		{"s", printString},
+		{"%", NULL},		
 		{NULL, NULL}
 	};
 
@@ -44,7 +32,16 @@ int _printf(const char *format, ...)
 			{
 				if (*format == *(types[i].specifier))
 				{
-					types[i].f(args, &ans);
+					if (types[i].f != NULL)
+					{
+						types[i].f(args, &ans);
+					}						
+					else
+					{
+						_putchar(*(types[i].specifier)); /* e.g. % */
+						ans++;
+					}				
+						
 					format++;
 					break;
 				}
@@ -64,3 +61,23 @@ int _printf(const char *format, ...)
 
 	return (ans);
 }
+
+
+
+/**
+ * _printChar -
+ */
+void printChar(va_list args, int *ans)
+{
+	char c = va_arg(args, int);
+	_putchar(c);
+	*ans = *ans + 1;
+}
+
+void printString(va_list args, int *ans)
+{
+	char *str = va_arg(args, char *);
+	printf("%s", str);
+	*ans = *ans + 4;
+}
+
