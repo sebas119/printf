@@ -8,11 +8,11 @@
 
 typedef struct printTypes
 {
-	char *type;
-	void (*f)(va_list, char *, unsigned int);
+	char *specifier;
+	void (*f)();
 } pt;
 
-int my_putchar(char c);
+int _putchar(char c);
 int _printf(const char *format, ...);
 
 /* Tools */

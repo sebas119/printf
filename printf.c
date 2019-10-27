@@ -3,9 +3,9 @@
 /**
  * _printChar -
  */
-void _printChar(va_list list, char *str, unsigned int pos)
+void _printChar(va_list args)
 {
-	str[pos] = va_arg(list, char);
+	_putchar(va_arg(args, int));
 }
 
 /**
@@ -16,39 +16,41 @@ void _printChar(va_list list, char *str, unsigned int pos)
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i, j;
-	size_t len = 0;
+	unsigned int j;
+	int ans = 0;
 	va_list args;
-	char  *ans;
 	pt types[] = {
-		{"c", _printChar}
+		{"c", _printChar},
+		{NULL, NULL}
 	};
-
-	len = _strlen(format);
-	ans = malloc(sizeof(char) * len + 1);
-	_strcpy(ans, format);
 
 	va_start(args, format);
 
-	while (format[i] != '\0')
+	while (format != NULL && *format != '\n')
 	{
-		j = 0;
-		while (j < 1)
+		if(*format == '%')
 		{
-			if (format[i] == *types[j].type)
+			format++;
+
+			for (j = 0; types[j].specifier != NULL; j++)
 			{
-				valid[j].f(args, ans, i);
+				if (*format == types[j].specifier[0])
+				{
+					types[j].f(args);
+					format++;
+					ans++;
+				}
 			}
-			j++;
 		}
-		i++;
+		else
+		{
+			_putchar(*format);
+			format++;
+			ans++;
+		}
 	}
 
-	for (i = 0; ans != '\0'; i++, ans++)
-	{
-		my_putchar(*ans);
-	}
+	va_end(args);
 
-
-	return (0);
+	return (ans);
 }
