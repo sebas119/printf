@@ -26,6 +26,9 @@ prints a decimal number
 .B %i
 prints a decimal numb
 
+.B %b
+convert a decimal number to binary
+
 .SH BUGS
 No known bugs.
 .SH AUTHOR
