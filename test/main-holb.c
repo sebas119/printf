@@ -54,5 +54,9 @@ int main(void)
 	len = _printf("%yd");
 	_printf("\n%yd case: %d\n", len);
 
+
+	len = _printf("%d", -2147483648);
+	_printf("\n%d\n", len);
+
     return (0);
 }
