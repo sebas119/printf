@@ -24,10 +24,10 @@ int _printf(const char *format, ...)
 		{"d", printInteger},
 		{NULL, NULL}
 	};
+	int notfound = 1;
 
-	if (format == NULL)
+	if (format == NULL || (*format == '%' && *(format + 1) == '\0'))
 		return (-1);
-
 	va_start(args, format);
 
 	while (format != NULL && *format != '\0')
@@ -41,22 +41,21 @@ int _printf(const char *format, ...)
 				{
 					ans += types[i].f(args);
 					format++;
+					notfound = 0;
 					break;
 				}
 			}
+			if (notfound)
+				ans += write(1, format - 1, 1);
 		}
 		else
 		{
 			ans += write(1, format++, 1);
 		}
 	}
-
 	va_end(args);
-
 	return (ans);
 }
-
-
 
 /**
  * printChar - Prints a character
@@ -79,8 +78,11 @@ int printChar(va_list args)
 int printString(va_list args)
 {
 	char *str = va_arg(args, char *);
-	int size = _strlen(str);
+	int size;
 
+	if (str == NULL)
+		str = "(null)";
+	size = _strlen(str);
 	return (write(1, str, size));
 }
 

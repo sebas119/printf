@@ -41,5 +41,18 @@ int main(void)
     /*_printf("Unknown:[%r]\n");
     printf("Unknown:[%r]\n");*/
 
+	_printf("\nSOME EDGE CASES\n");
+	len = _printf("%");
+	_printf("\nPercentage case: %d\n", len);
+
+	len = _printf("%s", NULL);
+	_printf("\n%d\n", len);
+
+	len = _printf(NULL);
+	_printf("\nNULL case: %d\n", len);
+
+	len = _printf("%yd");
+	_printf("\n%yd case: %d\n", len);
+
     return (0);
 }
