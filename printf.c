@@ -24,10 +24,10 @@ int _printf(const char *format, ...)
 		{"d", printInteger},
 		{NULL, NULL}
 	};
+	int notfound = 1;
 
 	if (format == NULL || (*format == '%' && *(format + 1) == '\0'))
 		return (-1);
-
 	va_start(args, format);
 
 	while (format != NULL && *format != '\0')
@@ -41,22 +41,21 @@ int _printf(const char *format, ...)
 				{
 					ans += types[i].f(args);
 					format++;
+					notfound = 0;
 					break;
 				}
 			}
+			if (notfound)
+				ans += write(1, format - 1, 1);
 		}
 		else
 		{
 			ans += write(1, format++, 1);
 		}
 	}
-
 	va_end(args);
-
 	return (ans);
 }
-
-
 
 /**
  * printChar - Prints a character
