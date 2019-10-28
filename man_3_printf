@@ -23,6 +23,9 @@ prints a string
 .B %d
 prints a decimal number
 
+.B %i
+prints a decimal numb
+
 .SH BUGS
 No known bugs.
 .SH AUTHOR
