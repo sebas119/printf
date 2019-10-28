@@ -135,7 +135,7 @@ int printBinary(va_list args)
 	int num = va_arg(args, int);
 	int size;
 
-	str = itoa_unsigned(num, buff, 2);
+	str = unsigned_itoa(num, buff, 2);
 	size = _strlen(str);
 
 	return (write(1, str, size));
