@@ -89,9 +89,9 @@ void swap(int *a, int *b)
  */
 char *itoa(int value, char *buffer, int base)
 {
-	int n = _abs(value);
-	int i = 0;
-	int r;
+	unsigned int n = _abs(value);
+	unsigned int i = 0;
+	unsigned int r;
 
 	if (base < 2 || base > 32)
 		return (buffer);
