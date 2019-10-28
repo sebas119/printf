@@ -31,6 +31,13 @@ void swap(char *x, char *y);
 char *itoa(int value, char *buffer, int base);
 
 /* End string tools*/
+/*format functions*/
+int printChar(va_list args);
+int printString(va_list args);
+int printPercentage(va_list args);
+int printInteger(va_list args);
+int printBinary(va_list args);
+/*end of format functions*/
 
 int _printf(const char *format, ...);
 #endif /* PRINTF_H */
