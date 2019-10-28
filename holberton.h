@@ -32,5 +32,14 @@ char *unsigned_itoa(unsigned int value, char *buffer, int base);
 
 /* End string tools*/
 
+/* Print library */
+int printChar(va_list args);
+int printString(va_list args);
+int printPercentage(va_list args);
+int printInteger(va_list args);
+int printBinary(va_list args);
+/* End print library */
+
+int (*get_print(const char *format))(va_list);
 int _printf(const char *format, ...);
 #endif /* PRINTF_H */
