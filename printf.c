@@ -22,6 +22,7 @@ int _printf(const char *format, ...)
 		{"s", printString},
 		{"%", printPercentage},
 		{"d", printInteger},
+		{"i", printInteger},
 		{NULL, NULL}
 	};
 	int notfound = 1;
