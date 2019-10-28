@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 		{NULL, NULL}
 	};
 
-	if (format == NULL)
+	if (format == NULL || (*format == '%' && *(format + 1) == '\0'))
 		return (-1);
 
 	va_start(args, format);
@@ -79,8 +79,11 @@ int printChar(va_list args)
 int printString(va_list args)
 {
 	char *str = va_arg(args, char *);
-	int size = _strlen(str);
+	int size;
 
+	if (str == NULL)
+		str = "(null)";
+	size = _strlen(str);
 	return (write(1, str, size));
 }
 
