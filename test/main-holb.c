@@ -58,5 +58,11 @@ int main(void)
 	len = _printf("%d", -2147483648);
 	_printf("\n%d\n", len);
 
+	len = _printf("To binary 50: %b", 50);
+	_printf("\n%d\n", len);
+
+	len = _printf("%b", 4294967295);
+	_printf("\nLen of the previos: %d\n", len);
+
     return (0);
 }

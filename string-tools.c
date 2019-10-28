@@ -116,3 +116,41 @@ char *itoa(int value, char *buffer, int base)
 	rev_string(buffer);
 	return (buffer);
 }
+
+
+
+
+/**
+ * itoa_unsigned - Converts unsigned integers to string
+ * @value: Data to be converted
+ * @buffer: Array to store the data
+ * @base: Numerical base to convert
+ *
+ * Return: String that represent the integers
+ */
+char *itoa_unsigned(unsigned int value, char *buffer, int base)
+{
+	unsigned int n = value;
+	unsigned int i = 0;
+	unsigned int r;
+
+	if (base < 2 || base > 32)
+		return (buffer);
+
+	while (n)
+	{
+		r = n % base;
+		if (r >= 10)
+			buffer[i++] = 65 + (r - 10);
+		else
+			buffer[i++] = 48 + r;
+		n /= base;
+	}
+
+	if (i == 0)
+		buffer[i++] = '0';
+
+	buffer[i] = '\0';
+	rev_string(buffer);
+	return (buffer);
+}

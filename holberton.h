@@ -30,6 +30,7 @@ int _abs(int n);
 void rev_string(char *s);
 void swap(char *x, char *y);
 char *itoa(int value, char *buffer, int base);
+char *itoa_unsigned(unsigned int value, char *buffer, int base);
 
 /* End string tools*/
 

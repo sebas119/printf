@@ -5,6 +5,7 @@ int printChar(va_list args);
 int printString(va_list args);
 int printPercentage(va_list args);
 int printInteger(va_list args);
+int printBinary(va_list args);
 
 /**
  * _printf - Emulate the behavior of printf original
@@ -23,6 +24,7 @@ int _printf(const char *format, ...)
 		{"%", printPercentage},
 		{"d", printInteger},
 		{"i", printInteger},
+		{"b", printBinary},
 		{NULL, NULL}
 	};
 	int notfound = 1;
@@ -109,12 +111,31 @@ int printPercentage(va_list args)
  */
 int printInteger(va_list args)
 {
-	char buff[33];
+	char buff[40];
 	char *str;
 	int num = va_arg(args, int);
 	int size;
 
 	str = itoa(num, buff, 10);
+	size = _strlen(str);
+
+	return (write(1, str, size));
+}
+
+/**
+ * printBinary - Prints a binary number
+ * @args: Argument passed
+ *
+ * Return: length of data
+ */
+int printBinary(va_list args)
+{
+	char buff[33];
+	char *str;
+	int num = va_arg(args, int);
+	int size;
+
+	str = itoa_unsigned(num, buff, 2);
 	size = _strlen(str);
 
 	return (write(1, str, size));
