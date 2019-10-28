@@ -1,0 +1,29 @@
+.TH _printf 3 "28 october 2019" "0.1" "_printf man page"
+.SH NAME
+.B _printf
+- print and give format to data.
+.SH SYNOPSIS
+.B _printf
+.I FORMAT [ARGUMENTS]
+.SH DESCRIPTION
+Print ARGUMENT(S) depending of the format required. This could be an integer, character or a string
+
+.B FORMAT
+give the program the instructions to print the format required, the interpreted sequenses are:
+
+.B %%
+prints a single %
+
+.B %c
+prints a single char
+
+.B %s
+prints a string
+
+.B %d
+prints a decimal number
+
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Written by Sebastian Lopez and Sebastian Garcia
