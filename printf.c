@@ -1,10 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
-
-int printChar(va_list args);
-int printString(va_list args);
-int printPercentage(va_list args);
-int printInteger(va_list args);
 
 /**
  * _printf - Emulate the behavior of printf original
@@ -14,18 +8,11 @@ int printInteger(va_list args);
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i;
 	int ans = 0;
 	va_list args;
-	pt types[] = {
-		{"c", printChar},
-		{"s", printString},
-		{"%", printPercentage},
-		{"d", printInteger},
-		{NULL, NULL}
-	};
+	int (*fp)(va_list);
 
-	if (format == NULL)
+	if (format == NULL || (*format == '%' && *(format + 1) == '\0'))
 		return (-1);
 
 	va_start(args, format);
@@ -34,15 +21,17 @@ int _printf(const char *format, ...)
 	{
 		if (*format  == '%')
 		{
-			format++;
-			for (i = 0; types[i].specifier != NULL; i++)
+			fp = get_print(format + 1);
+
+			if (fp != NULL)
 			{
-				if (*format == *(types[i].specifier))
-				{
-					ans += types[i].f(args);
-					format++;
-					break;
-				}
+				ans += fp(args);
+				format += 2;
+			}
+			else
+			{
+				ans += write(1, format, 1);
+				format++;
 			}
 		}
 		else
@@ -50,8 +39,6 @@ int _printf(const char *format, ...)
 			ans += write(1, format++, 1);
 		}
 	}
-
 	va_end(args);
-
 	return (ans);
 }
