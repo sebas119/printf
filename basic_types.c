@@ -10,7 +10,7 @@ int printChar(va_list args)
 {
 	char c = va_arg(args, int);
 
-	return (write(1, &c, 1));
+	return (buffer(&c, 1, 0));
 }
 /**
  * printString - Prints a string
@@ -26,7 +26,7 @@ int printString(va_list args)
 	if (str == NULL)
 		str = "(null)";
 	size = _strlen(str);
-	return (write(1, str, size));
+	return (buffer(str, size, 0));
 }
 
 /**
@@ -40,7 +40,7 @@ int printPercentage(va_list args)
 	char p = '%';
 
 	(void) args;
-	return (write(1, &p, 1));
+	return (buffer(&p, 1, 0));
 }
 
 /**
@@ -59,7 +59,7 @@ int printInteger(va_list args)
 	str = itoa(num, buff, 10);
 	size = _strlen(str);
 
-	return (write(1, str, size));
+	return (buffer(str, size, 0));
 }
 
 /**
@@ -78,5 +78,5 @@ int printBinary(va_list args)
 	str = unsigned_itoa(num, buff, 2);
 	size = _strlen(str);
 
-	return (write(1, str, size));
+	return (buffer(str, size, 0));
 }
