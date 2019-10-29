@@ -27,17 +27,25 @@ char *_strcpy(char *dest, char *src);
 /* String tools */
 int _abs(int n);
 void rev_string(char *s);
-void swap(char *x, char *y);
 char *itoa(int value, char *buffer, int base);
+char *unsigned_itoa(unsigned int value, char *buffer, int base);
+char *string_toupper(char *a);
 
 /* End string tools*/
-/*format functions*/
+
+/* Print library */
 int printChar(va_list args);
 int printString(va_list args);
 int printPercentage(va_list args);
 int printInteger(va_list args);
 int printBinary(va_list args);
-/*end of format functions*/
 
+int printUnsignedDecimal(va_list args);
+int printUnsignedOctal(va_list args);
+int printUnsignedHex(va_list args);
+int printUnsignedHexUpper(va_list args);
+/* End print library */
+
+int (*get_print(const char *format))(va_list);
 int _printf(const char *format, ...);
 #endif /* PRINTF_H */
