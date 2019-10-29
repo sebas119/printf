@@ -29,6 +29,7 @@ int _abs(int n);
 void rev_string(char *s);
 char *itoa(int value, char *buffer, int base);
 char *unsigned_itoa(unsigned int value, char *buffer, int base);
+char *string_toupper(char *a);
 
 /* End string tools*/
 
@@ -38,6 +39,11 @@ int printString(va_list args);
 int printPercentage(va_list args);
 int printInteger(va_list args);
 int printBinary(va_list args);
+
+int printUnsignedDecimal(va_list args);
+int printUnsignedOctal(va_list args);
+int printUnsignedHex(va_list args);
+int printUnsignedHexUpper(va_list args);
 /* End print library */
 
 int (*get_print(const char *format))(va_list);

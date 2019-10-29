@@ -16,6 +16,10 @@ int (*get_print(const char *format))(va_list)
 		{"d", printInteger},
 		{"i", printInteger},
 		{"b", printBinary},
+		{"u", printUnsignedDecimal},
+		{"o", printUnsignedOctal},
+		{"x", printUnsignedHex},
+		{"X", printUnsignedHexUpper},
 		{NULL, NULL}
 	};
 	int i;
