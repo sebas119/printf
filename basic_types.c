@@ -10,7 +10,6 @@ int printChar(va_list args)
 {
 	char c = va_arg(args, int);
 
-	/*return (write(1, &c, 1));*/
 	return (buffer(&c, 1, 0));
 }
 /**
@@ -27,7 +26,6 @@ int printString(va_list args)
 	if (str == NULL)
 		str = "(null)";
 	size = _strlen(str);
-	/*return (write(1, str, size));*/
 	return (buffer(str, size, 0));
 }
 

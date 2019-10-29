@@ -16,7 +16,7 @@ int printUnsignedDecimal(va_list args)
 	str = unsigned_itoa(num, buff, 10);
 	size = _strlen(str);
 
-	return (write(1, str, size));
+	return (buffer(str, size, 0));
 }
 
 /**
@@ -35,7 +35,7 @@ int printUnsignedOctal(va_list args)
 	str = unsigned_itoa(num, buff, 8);
 	size = _strlen(str);
 
-	return (write(1, str, size));
+	return (buffer(str, size, 0));
 }
 
 
@@ -56,7 +56,7 @@ int printUnsignedHex(va_list args)
 	str = unsigned_itoa(num, buff, 16);
 	size = _strlen(str);
 
-	return (write(1, str, size));
+	return (buffer(str, size, 0));
 }
 
 /**
@@ -75,5 +75,5 @@ int printUnsignedHexUpper(va_list args)
 	str = string_toupper(unsigned_itoa(num, buff, 16));
 	size = _strlen(str);
 
-	return (write(1, str, size));
+	return (buffer(str, size, 0));
 }
