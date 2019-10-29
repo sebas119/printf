@@ -64,5 +64,18 @@ int main(void)
 	len = _printf("%b", 4294967295);
 	_printf("\nLen of the previos: %d\n", len);
 
+	len = _printf("%u", 4294967295);
+	_printf("\nLen of the previos: %d\n", len);
+
+	len = _printf("%o", 4294967295);
+	_printf("\nLen of the previos: %d\n", len);
+
+	len = _printf("%x", 4294967295);
+	_printf("\nLen of the previos: %d\n", len);
+
+	len = _printf("%X", 4294967295);
+	_printf("\nLen of the previos: %d\n", len);
+
+
     return (0);
 }
