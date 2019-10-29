@@ -1,35 +1,62 @@
-.TH _printf 3 "28 october 2019" "0.1" "_printf man page"
+.TH _printf 3 "28 october 2019" "1.4" "_printf man page"
 .SH NAME
 .B _printf
 - print and give format to data.
 .SH SYNOPSIS
-.B _printf
-.I FORMAT [ARGUMENTS]
-.SH DESCRIPTION
-Print ARGUMENT(S) depending of the format required. This could be an integer, character or a string
+.B #include """holberton.h"""
 
+.B "int _printf" (constchar *format, ...)
+
+.B _printf
+(
+.I FORMAT [ARGUMENTS]
+)
+
+.SH DESCRIPTION
+The function _printf() prints ARGUMENT(S) in the standar output depending of the format given to the function.
+
+.IP "Return value"
+the _printf function returns the number of characters that was printed in the standar output.
+
+.PP
 .B FORMAT
-give the program the instructions to print the format required, the interpreted sequenses are:
+The format in the string to be imprinted are given by a sencuense of two characters that are always start with the % char, the format is not mandatory to be used in the structure of the function, the interpreted sequenses are:
 
 .B %%
-prints a single %
+prints a single %.
 
 .B %c
-prints a single char
+prints a single char.
 
 .B %s
-prints a string
+prints a string.
 
 .B %d
-prints a decimal number
+prints a decimal number.
 
 .B %i
-prints a decimal numb
+prints a decimal number.
 
-.B %b
-convert a decimal number to binary
+.B %u
+prints an unsigned decimal number.
+
+.B %o
+converts decimal number to octal number.
+
+.B %x
+converts decimal number to hexadecimal number in lowercase.
+
+.B %X
+converts decimal number to hexadecimal number in uppercase.
 
 .SH BUGS
 No known bugs.
+
+Any information, send email to:
+
+.I 1182@holbertonschool.com
+or
+.I 1259@holbertonschool.com
+
 .SH AUTHOR
-Written by Sebastian Lopez and Sebastian Garcia
+Written by Sebastian Lopez and Sebasitian Garcia
