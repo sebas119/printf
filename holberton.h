@@ -21,17 +21,20 @@ typedef struct printTypes
 
 /* Tools */
 int _strlen(const char *s);
-char *_strcpy(char *dest, char *src);
+int _abs(int n);
+void rev_string(char *s);
 /* End tools */
 
 /* String tools */
-int _abs(int n);
-void rev_string(char *s);
 char *itoa(int value, char *buffer, int base);
 char *unsigned_itoa(unsigned int value, char *buffer, int base);
 char *string_toupper(char *a);
 
 /* End string tools*/
+
+/* Buffer library */
+int buffer(char *str, int size, int flag);
+/* End buffer library */
 
 /* Print library */
 int printChar(va_list args);
@@ -46,6 +49,9 @@ int printUnsignedHex(va_list args);
 int printUnsignedHexUpper(va_list args);
 /* End print library */
 
+/* Principal */
 int (*get_print(const char *format))(va_list);
 int _printf(const char *format, ...);
+/* End principal */
+
 #endif /* PRINTF_H */

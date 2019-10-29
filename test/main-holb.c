@@ -76,6 +76,7 @@ int main(void)
 	len = _printf("%X", 4294967295);
 	_printf("\nLen of the previos: %d\n", len);
 
-
+	len = _printf("%b", 0);
+	_printf("\nLen of the previos: %d\n", len);
     return (0);
 }
