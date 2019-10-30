@@ -7,11 +7,11 @@ The _printf function produces output according to a format which is described be
 
 The available convertion specifiers are:
 
-%c: Prints a single character.
-%s: Prints a string of characters.
-%d: Prints integers.
-%i: Prints integers.
-%b: Prints the binary representation of a decimal.
-%u: Prints unsigned integers
-%x: Prints the hexadecial representation of an unsigned decimal in lowercase letters
-%X:Prints the hexadecial representation of an unsigned decimal in uppercase letters
+- %c: Prints a single character.
+- %s: Prints a string of characters.
+- %d: Prints integers.
+- %i: Prints integers.
+- %b: Prints the binary representation of a decimal.
+- %u: Prints unsigned integers
+- %x: Prints the hexadecial representation of an unsigned decimal in lowercase letters
+- %X:Prints the hexadecial representation of an unsigned decimal in uppercase letters
