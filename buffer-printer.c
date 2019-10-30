@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+#include "stdio.h"
 /**
  * buffer - Create the buffer and fill with 1024 bytes, then
  * write to the stdout and set the position of buffer to the
@@ -17,6 +17,18 @@ int buffer(char *str, int size, int flag)
 	static int i;
 	int j, ans = 0;
 
+	for (j = 0; j < size; j++)
+	{
+		buffer[i] = str[j];
+		i++;
+
+		if (i == 1024)
+		{
+			ans += write(1, buffer, i);
+			i = 0;
+		}
+	}
+
 	if (flag)
 	{
 		ans += write(1, buffer, i);
@@ -24,15 +36,5 @@ int buffer(char *str, int size, int flag)
 		return (ans);
 	}
 
-	for (j = 0; j < size; j++, i++)
-	{
-		if (i > 1024)
-		{
-			ans += write(1, buffer, i);
-			i = 0;
-		}
-		else
-			buffer[i] = str[j];
-	}
 	return (ans);
 }
