@@ -31,14 +31,16 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				c = *format++;
+				c = *format;
 				ans += buffer(&(c), 1, 0);
+				format++;
 			}
 		}
 		else
 		{
-			c = *format++;
+			c = *format;
 			ans += buffer(&(c), 1, 0);
+			format++;
 		}
 	}
 
