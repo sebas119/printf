@@ -32,9 +32,11 @@ char *string_toupper(char *a);
 
 /* End string tools*/
 
+
 /* Buffer library */
 int buffer(char *str, int size, int flag);
 /* End buffer library */
+
 
 /* Print library */
 int printChar(va_list args);
@@ -48,6 +50,7 @@ int printUnsignedOctal(va_list args);
 int printUnsignedHex(va_list args);
 int printUnsignedHexUpper(va_list args);
 /* End print library */
+
 
 /* Principal */
 int (*get_print(const char *format))(va_list);

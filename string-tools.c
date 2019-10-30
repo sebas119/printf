@@ -38,9 +38,6 @@ char *itoa(int value, char *buffer, int base)
 	return (buffer);
 }
 
-
-
-
 /**
  * unsigned_itoa - Converts unsigned integers to string
  * @value: Data to be converted
@@ -75,7 +72,6 @@ char *unsigned_itoa(unsigned int value, char *buffer, int base)
 	rev_string(buffer);
 	return (buffer);
 }
-
 
 /**
  * *string_toupper - Changes all lowercase letters of a string to uppercase
