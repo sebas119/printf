@@ -16,7 +16,32 @@
 The function _printf() prints ARGUMENT(S) in the standar output depending of the format given to the function.
 
 .IP "Return value"
-the _printf function returns the number of characters that was printed in the standar output.
+the _printf function returns the number of characters that was printed in the standar output, if there is an error during the execution of the _printf function then the return is -1 and there is nothing printed in the standard output.
+
+.IP "libraries"
+for the _printf function was used 3 additional libraries: unistd.h, stdlib.h and stdarg.h
+
+.IP "functions used"
+In this project the _printf was use other functions which are the next:
+
+
+.IP "printChar"
+the function printchar declared as "int printChar(va_list args)" take the a character that is in the argument of the _printf function, this is stored in a char variable what is the variable used to make the print with "write" when this one is called by the format specifier 'c', te printchar function prints one single character and in case of being the onli thing in to print in the function the return value will be '1' as we said the before.
+
+.IP "printString"
+the function printstring declared as "int printString(va_list args)" take a string and stores it as an array, the array use a pointer to cross it and pprint it with "write", the printstring function is called when the format specifier 's' is used in the _printf function the return value at the end of the process will be the number of the characters of the string if there is not other function call, or anythihg else in the printf function.
+
+.IP "printPercentage"
+the function printpercentage declared as "int printPercentage(va_list args)" will print the symbol of '%' when ther is another '%' just before in the format par of the _printf function, this function will not take a value from an argument in the _printf function like printChar function, and have already an value of '%' in a char variable, like te printchar function this will return '1' if there is nothing else in the _putchar function.
+
+.IP "printInteger"
+the function printinteger declared as "int printInteger(va_list args)" will print the value of an integer that is in the argument of the _printf function, this is stored in a int variable, make a space in the memory of 40 bytes to storage the number as an array of characters, save the value of the integer in _printf in a new int variable called num, then this number is converted to a char with the "itoa" function, where is given the space of memory and the base of number 10 given to a decimal, and the new variable is a char array what is printed with the function "write".
+
+.IP "printBinary"
+the function printbinary declared as "int printBinary(va_list args)" works very similar to the printinteger function printing a number, but this one convert a decimal number to a binary, so the function take the value of an integer that is in the argument of the _printf function, this is stored in a int variable, make a space in the memory of 40 bytes to storage the number as a array of characters, save the value of the integer in _printf in a new int variable called num, then this number is converted to a char with the "itoa" function, where is given the space of memory and the base of number 2 given to binay number, and the new variable is a char array, the length of this array is given by the function "_strlen", with the function "write" is printed the string and .
+
+.IP "printUnsignedDecimal"
+the function printinteger declared as "int printInteger(va_list args)" will print the value of an unsigned integer that is in the argument of the _printf function, this is stored in a unsignde int variable, make a space in the memory of 40 bytes to storage the number as an array of characters, save the value of the integer in _printf in a new unsigned int variable called num, this number is converted to a char with the "itoa" function, where is given the space of memory and the base of number 10  given to a decimal
 
 .PP
 .B FORMAT
