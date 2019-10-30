@@ -32,13 +32,6 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				ans += write(1, format, 1);
-			{
-				ans += fp(args);
-				format += 2;
-			}
-			else
-			{
 				c = *format;
 				ans += buffer(&(c), 1, 0);
 				format++;
